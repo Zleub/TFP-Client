@@ -1,15 +1,11 @@
-NAME =	SServer
-SRC =	main.cpp \
-		Lua.cpp \
-		SimpleServer.cpp \
-		Socket.cpp \
-		Client.cpp
+NAME =	Client
+SRC =	main.cpp
 OBJ =	$(subst .cpp,.o,$(SRC))
 
-CC =	g++
+CC =	clang++
 FLAGS =	-Wall -Werror -Wextra
-INC =	-Ilua-5.3.0/src/
-LIBS =	-Llua-5.3.0/src/ -llua
+INC =	-ISFML-2.2/include
+LIBS =	-LSFML-2.2/lib -lsfml-graphics -lsfml-window -lsfml-system
 
 .PHONY: all re clean fclean
 
