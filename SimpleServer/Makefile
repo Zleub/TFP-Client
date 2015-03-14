@@ -1,10 +1,14 @@
-NAME = SimpleServer
-SRC = main.cpp SimpleServer.cpp
-OBJ = $(subst .cpp,.o,$(SRC))
+NAME =	SServer
+SRC =	main.cpp \
+		Lua.cpp \
+		SimpleServer.cpp \
+		Socket.cpp \
+		Client.cpp
+OBJ =	$(subst .cpp,.o,$(SRC))
 
-CC = g++
-FLAGS = -Wall -Werror -Wextra
-LIBS = -Ilua-5.3.0/src/ -Llua-5.3.0/src/ -llua
+CC =	g++
+FLAGS =	-Wall -Werror -Wextra
+LIBS =	-Ilua-5.3.0/src/ -Llua-5.3.0/src/ -llua
 
 .PHONY: all re clean fclean
 

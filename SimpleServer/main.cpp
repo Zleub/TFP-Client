@@ -2,9 +2,8 @@
 
 int main(void)
 {
-	SimpleServer s;
+	SimpleServer s("conf");
 
-	s.startCPPSide();
 	s.run();
 	return (0);
 }
