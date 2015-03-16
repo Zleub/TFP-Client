@@ -1,6 +1,9 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
+// #include <Mouse.hpp>
+
+// -- //
 class Extern {
 private:
 	Extern(Extern const &);
@@ -10,6 +13,8 @@ public:
 	~Extern(void);
 };
 
+
+// USELESS WITH sf::Drawable inherence
 class Drawable {
 private:
 	Drawable(void);
@@ -33,6 +38,8 @@ Drawable::Drawable(std::string filename)
 
 sf::Sprite & Drawable::getSprite(void) { return *_sprite; }
 
+
+// -- //
 class Interactible {
 private:
 	Interactible(Interactible const &);
@@ -66,6 +73,11 @@ Game::~Game(void) {}
 
 void	Game::run(void)
 {
+	sf::Font f;
+	f.loadFromFile("ressources/arial.ttf");
+
+	sf::Text t("CACA", f, 20);
+
 	while (_window->isOpen())
 	{
 		sf::Event event;
@@ -76,6 +88,9 @@ void	Game::run(void)
 		}
 		_window->clear();
 		_window->draw(_drawable->getSprite());
+		sf::Vector2i position = sf::Mouse::getPosition();
+		t.setPosition(position.x, position.y);
+		_window->draw(t);
 		_window->display();
 	}
 }
@@ -86,36 +101,3 @@ int main(void)
 
 	g.run();
 }
-
-// int main()
-// {
-// 	sf::Sprite sprite(texture);
-// 	// Create a graphical text to display
-
-// 	sf::Font font;
-// 	if (!font.loadFromFile("ressources/arial.ttf"))
-// 		return EXIT_FAILURE;
-// 	sf::Text text("Hello SFML", font, 50);
-// 	text.setPosition(100, 100);
-// 	// Start the game loop
-// 	while (window.isOpen())
-// 	{
-// 		// Process events
-// 		sf::Event event;
-// 		while (window.pollEvent(event))
-// 		{
-// 			// Close window: exit
-// 			if (event.type == sf::Event::Closed)
-// 				window.close();
-// 		}
-// 		// Clear screen
-// 		window.clear();
-// 		// Draw the sprite
-// 		window.draw(sprite);
-// 		// Draw the string
-// 		window.draw(text);
-// 		// Update the window
-// 		window.display();
-// 	}
-// 	return EXIT_SUCCESS;
-// }
