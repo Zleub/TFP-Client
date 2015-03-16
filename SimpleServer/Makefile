@@ -1,4 +1,4 @@
-NAME =	SServer
+NAME =	SimpleServer
 SRC =	main.cpp \
 		Lua.cpp \
 		SimpleServer.cpp \

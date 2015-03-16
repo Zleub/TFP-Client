@@ -13,6 +13,11 @@ void		Lua::init(void)
 {
 	// this->exec("init = require 'init'");
 	this->exec("inspect = require 'inspect'");
+	lua_getglobal(L, "inspect");
+	if (!lua_istable(L, -1))
+		std::cerr << "No " << "name" << " table" << std::endl;
+	else
+		std::cout << "get table" << std::endl;
 }
 
 void		Lua::exec(std::string str)
@@ -36,7 +41,7 @@ std::string	Lua::get_Gstring(std::string name)
 {
 	lua_getglobal(L, name.c_str());
 	if (!lua_isstring(L, -1))
-		std::cerr << "No " << name << " number" << std::endl;
+		std::cerr << "No " << name << " string" << std::endl;
 	else
 		return lua_tostring(L, -1);
 	return ("");
