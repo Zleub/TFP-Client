@@ -88,7 +88,7 @@ void	Game::run(void)
 		}
 		_window->clear();
 		_window->draw(_drawable->getSprite());
-		sf::Vector2i position = sf::Mouse::getPosition();
+		sf::Vector2i position = sf::Mouse::getPosition(*_window);
 		t.setPosition(position.x, position.y);
 		_window->draw(t);
 		_window->display();
