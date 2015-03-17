@@ -15,7 +15,7 @@ public:
 
 
 // USELESS WITH sf::Drawable inherence
-class Drawable {
+class Drawable : public sf::Drawable {
 private:
 	Drawable(void);
 	Drawable(Drawable const &);
@@ -27,7 +27,8 @@ public:
 	Drawable(std::string);
 	~Drawable(void);
 
-	sf::Sprite & getSprite(void);
+	void			draw(sf::RenderWindow);
+	sf::Sprite &	getSprite(void);
 };
 
 Drawable::Drawable(std::string filename)
@@ -35,6 +36,8 @@ Drawable::Drawable(std::string filename)
 	_texture.loadFromFile(filename);
 	_sprite = new sf::Sprite(_texture);
 }
+
+void		Drawable::draw(sf::RenderWindow w) { w.draw(_sprite); }
 
 sf::Sprite & Drawable::getSprite(void) { return *_sprite; }
 

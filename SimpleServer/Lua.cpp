@@ -13,11 +13,6 @@ void		Lua::init(void)
 {
 	// this->exec("init = require 'init'");
 	this->exec("inspect = require 'inspect'");
-	lua_getglobal(L, "inspect");
-	if (!lua_istable(L, -1))
-		std::cerr << "No " << "name" << " table" << std::endl;
-	else
-		std::cout << "get table" << std::endl;
 }
 
 void		Lua::exec(std::string str)
