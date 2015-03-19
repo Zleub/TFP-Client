@@ -62,6 +62,13 @@ Client &	Socket::_accept(void)
 	return (*c);
 }
 
+#include <sstream>
+
+void		Socket::_write(int fd, std::string str)
+{
+	write(fd, str.c_str(), str.size());
+}
+
 int			Socket::_read(int fd)
 {
 	char	buf[255];
@@ -77,8 +84,13 @@ int			Socket::_read(int fd)
 	}
 	else
 	{
-		std::cout << "got message: " << buf;
+		std::cout << "got message: " << buf << " by " << fd << std::endl;
+
+		int out = dup(1);
+		dup2(fd, 1);
 		L->exec(buf);
+		dup2(out, 1);
+
 		return 1;
 	}
 }

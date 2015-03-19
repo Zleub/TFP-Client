@@ -4,9 +4,9 @@
 #include <iostream>
 
 extern "C" {
-	#include "lua-5.3.0/src/lua.h"
-	#include "lua-5.3.0/src/lualib.h"
-	#include "lua-5.3.0/src/lauxlib.h"
+	#include "lua.h"
+	#include "lualib.h"
+	#include "lauxlib.h"
 }
 
 class	Lua {

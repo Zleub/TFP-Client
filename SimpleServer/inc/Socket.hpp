@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <cstring>
+#include <ios>
 
 #include "Client.hpp"
 #include "Lua.hpp"
@@ -36,6 +37,7 @@ public:
 	void				_select(void);
 	Client &			_accept(void);
 	int					_read(int);
+	void				_write(int, std::string);
 };
 
 #endif

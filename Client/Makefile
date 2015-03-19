@@ -7,8 +7,6 @@ FLAGS =	-Wall -Werror -Wextra
 INC =	-ISFML-2.2/include
 LIBS =	-LSFML-2.2/lib -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
-DYLD_LIBRARY_PATH =	SFML-2.2/lib
-
 .PHONY: all re clean fclean
 
 all: $(NAME)
