@@ -1,6 +1,6 @@
 #include "SimpleServer.hpp"
 
-SimpleServer::SimpleServer(std::string file = "conf")
+SimpleServer::SimpleServer(std::string file)
 {
 	L.exec(file + " = require '" + file + "'");
 	if (L.get_Gstring("host") == "" || L.get_Gnumber("port") == 0)

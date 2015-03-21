@@ -17,7 +17,7 @@ private:
 	std::string	host;
 	int			port;
 public:
-	SimpleServer(std::string);
+	SimpleServer(std::string file = "conf");
 	~SimpleServer(void);
 
 	void		run(void);
