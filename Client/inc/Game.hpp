@@ -6,7 +6,7 @@
 // /ddddy:oddddddddds:sddddd/ By adebray - adebray
 // sdddddddddddddddddddddddds
 // sdddddddddddddddddddddddds Created: 2015-03-20 23:42:51
-// :ddddddddddhyyddddddddddd: Modified: 2015-03-21 00:20:21
+// :ddddddddddhyyddddddddddd: Modified: 2015-03-21 13:24:37
 //  odddddddd/`:-`sdddddddds
 //   +ddddddh`+dh +dddddddo
 //    -sdddddh///sdddddds-
@@ -30,7 +30,9 @@ public:
 	Game(void);
 	~Game(void);
 
-	void run(void) const ;
+	void	update(void) ;
+	void	draw(void) const ;
+	void	run(void) ;
 };
 
 #endif

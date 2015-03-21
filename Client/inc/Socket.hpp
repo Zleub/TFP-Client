@@ -6,7 +6,7 @@
 // /ddddy:oddddddddds:sddddd/ By adebray - adebray
 // sdddddddddddddddddddddddds
 // sdddddddddddddddddddddddds Created: 2015-03-21 00:22:33
-// :ddddddddddhyyddddddddddd: Modified: 2015-03-21 11:27:30
+// :ddddddddddhyyddddddddddd: Modified: 2015-03-21 12:52:17
 //  odddddddd/`:-`sdddddddds
 //   +ddddddh`+dh +dddddddo
 //    -sdddddh///sdddddds-
@@ -19,6 +19,7 @@
 #include <iostream>
 
 extern "C" {
+	#include <unistd.h>
 	#include <sys/types.h>
 	#include <sys/socket.h>
 	#include <netinet/in.h>
@@ -39,6 +40,7 @@ public:
 	~Socket(void);
 
 	void	C_connect(void);
+	void	C_write(std::string) const ;
 };
 
 #endif

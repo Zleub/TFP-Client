@@ -6,7 +6,7 @@
 // /ddddy:oddddddddds:sddddd/ By adebray - adebray
 // sdddddddddddddddddddddddds
 // sdddddddddddddddddddddddds Created: 2015-03-20 22:14:10
-// :ddddddddddhyyddddddddddd: Modified: 2015-03-21 11:36:48
+// :ddddddddddhyyddddddddddd: Modified: 2015-03-21 12:00:24
 //  odddddddd/`:-`sdddddddds
 //   +ddddddh`+dh +dddddddo
 //    -sdddddh///sdddddds-
@@ -23,6 +23,13 @@ int main(void)
 	Game	game;
 	Socket	s;
 
-	s.C_connect();
+	try {
+		s.C_connect();
+	}
+	catch (std::exception e) {
+		std::cerr << e.what() << std::endl;
+	}
+
+	s.C_write("request");
 	game.run();
 }

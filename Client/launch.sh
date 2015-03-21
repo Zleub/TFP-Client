@@ -1,4 +1,5 @@
-export DYLD_LIBRARY_PATH=SFML-2.2/lib
-./Client
+#!/bin/sh
+export DYLD_LIBRARY_PATH=lib/SFML-2.2/lib
+make && ./Client
 
 
