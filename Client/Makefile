@@ -1,10 +1,14 @@
 NAME =	Client
-SRC =	main.cpp
 OBJ =	$(subst .cpp,.o,$(SRC))
+SRC =	main.cpp\
+		SocketException.cpp\
+		Socket.cpp\
+		Game.cpp\
+		Player.cpp\
 
-CC =	clang++
+CC =	g++
 FLAGS =	-Wall -Werror -Wextra
-INC =	-ISFML-2.2/include
+INC =	-ISFML-2.2/include -I.
 LIBS =	-LSFML-2.2/lib -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
 .PHONY: all re clean fclean
