@@ -6,7 +6,7 @@
 // /ddddy:oddddddddds:sddddd/ By adebray - adebray
 // sdddddddddddddddddddddddds
 // sdddddddddddddddddddddddds Created: 2015-03-20 22:28:10
-// :ddddddddddhyyddddddddddd: Modified: 2015-03-21 13:27:14
+// :ddddddddddhyyddddddddddd: Modified: 2015-03-21 19:15:54
 //  odddddddd/`:-`sdddddddds
 //   +ddddddh`+dh +dddddddo
 //    -sdddddh///sdddddds-
@@ -20,14 +20,17 @@
 
 class Player : public sf::Drawable {
 private:
+	Player(void);
 	Player(Player const &);
 	Player &	operator=(Player const &);
 
 	int				_orientation;
 	sf::Texture		*_texture;
 	sf::Sprite		*_sprite;
+
+	static int	Width;
+	static int	Height;
 public:
-	Player(void);
 	Player(std::string);
 	~Player(void);
 

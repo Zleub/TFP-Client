@@ -7,7 +7,7 @@ SRC =	src/main.cpp\
 		src/Game.cpp\
 		src/Player.cpp\
 
-CC =	g++
+CC =	clang++
 FLAGS =	-Wall -Werror -Wextra
 INC =	-Ilib/SFML-2.2/include -Iinc
 LIBS =	-Llib/SFML-2.2/lib -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio

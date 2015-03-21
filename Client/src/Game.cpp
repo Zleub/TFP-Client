@@ -6,7 +6,7 @@
 // /ddddy:oddddddddds:sddddd/ By adebray - adebray
 // sdddddddddddddddddddddddds
 // sdddddddddddddddddddddddds Created: 2015-03-20 23:44:55
-// :ddddddddddhyyddddddddddd: Modified: 2015-03-21 13:22:14
+// :ddddddddddhyyddddddddddd: Modified: 2015-03-21 18:45:21
 //  odddddddd/`:-`sdddddddds
 //   +ddddddh`+dh +dddddddo
 //    -sdddddh///sdddddds-
@@ -15,9 +15,12 @@
 
 #include <Game.hpp>
 
+int	Game::Width = 800;
+int	Game::Height = 600;
+
 Game::Game (void)
 {
-	_window = new sf::RenderWindow(sf::VideoMode(800, 600), "SFML window");
+	_window = new sf::RenderWindow(sf::VideoMode(Game::Width, Game::Height), "SFML window");
 	_player = new Player("res/xx_crusader_m.png");
 }
 
@@ -44,6 +47,8 @@ void	Game::run(void)
 		{
 			if (event.type == sf::Event::Closed)
 				_window->close();
+			if (event.type == sf::Event::KeyPressed)
+			std::cout << "press: " << event.key.code << std::endl;
 		}
 		update();
 		draw();

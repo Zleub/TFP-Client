@@ -6,7 +6,7 @@
 // /ddddy:oddddddddds:sddddd/ By adebray - adebray
 // sdddddddddddddddddddddddds
 // sdddddddddddddddddddddddds Created: 2015-03-20 23:42:51
-// :ddddddddddhyyddddddddddd: Modified: 2015-03-21 13:24:37
+// :ddddddddddhyyddddddddddd: Modified: 2015-03-21 18:44:00
 //  odddddddd/`:-`sdddddddds
 //   +ddddddh`+dh +dddddddo
 //    -sdddddh///sdddddds-
@@ -16,6 +16,7 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
+#include <iostream>
 #include <SFML/Graphics.hpp>
 #include <Player.hpp>
 
@@ -29,6 +30,9 @@ private:
 public:
 	Game(void);
 	~Game(void);
+
+	static int Width;
+	static int Height;
 
 	void	update(void) ;
 	void	draw(void) const ;
