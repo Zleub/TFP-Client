@@ -6,7 +6,7 @@
 // /ddddy:oddddddddds:sddddd/ By adebray - adebray
 // sdddddddddddddddddddddddds
 // sdddddddddddddddddddddddds Created: 2015-03-20 22:28:10
-// :ddddddddddhyyddddddddddd: Modified: 2015-03-22 15:57:25
+// :ddddddddddhyyddddddddddd: Modified: 2015-03-22 22:03:35
 //  odddddddd/`:-`sdddddddds
 //   +ddddddh`+dh +dddddddo
 //    -sdddddh///sdddddds-
@@ -25,6 +25,7 @@ private:
 	Player &	operator=(Player const &);
 
 	int				_orientation;
+	int				_hscale;
 	sf::Texture		*_texture;
 	sf::Sprite		*_sprite;
 
@@ -34,8 +35,11 @@ public:
 	Player(std::string);
 	~Player(void);
 
-	void			update(void);
+	void			KeyState(sf::Keyboard::Key);
+	void			update(sf::Event);
 	virtual void	draw(sf::RenderTarget &, sf::RenderStates)  const;
+
+	void			setTexture(void);
 };
 
 #endif

@@ -6,7 +6,7 @@
 // /ddddy:oddddddddds:sddddd/ By adebray - adebray
 // sdddddddddddddddddddddddds
 // sdddddddddddddddddddddddds Created: 2015-03-20 23:44:55
-// :ddddddddddhyyddddddddddd: Modified: 2015-03-21 18:45:21
+// :ddddddddddhyyddddddddddd: Modified: 2015-03-22 21:31:50
 //  odddddddd/`:-`sdddddddds
 //   +ddddddh`+dh +dddddddo
 //    -sdddddh///sdddddds-
@@ -28,7 +28,14 @@ Game::~Game (void) {}
 
 void	Game::update(void)
 {
-	_player->update();
+	sf::Event event;
+	while (_window->pollEvent(event))
+	{
+		if (event.type == sf::Event::Closed)
+			_window->close();
+		if (event.type == sf::Event::KeyPressed)
+			_player->update(event);
+	}
 }
 
 void	Game::draw(void) const
@@ -42,14 +49,6 @@ void	Game::run(void)
 {
 	while (_window->isOpen())
 	{
-		sf::Event event;
-		while (_window->pollEvent(event))
-		{
-			if (event.type == sf::Event::Closed)
-				_window->close();
-			if (event.type == sf::Event::KeyPressed)
-			std::cout << "press: " << event.key.code << std::endl;
-		}
 		update();
 		draw();
 	}
