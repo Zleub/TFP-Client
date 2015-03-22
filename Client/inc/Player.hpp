@@ -6,7 +6,7 @@
 // /ddddy:oddddddddds:sddddd/ By adebray - adebray
 // sdddddddddddddddddddddddds
 // sdddddddddddddddddddddddds Created: 2015-03-20 22:28:10
-// :ddddddddddhyyddddddddddd: Modified: 2015-03-21 19:15:54
+// :ddddddddddhyyddddddddddd: Modified: 2015-03-22 15:57:25
 //  odddddddd/`:-`sdddddddds
 //   +ddddddh`+dh +dddddddo
 //    -sdddddh///sdddddds-
@@ -35,9 +35,7 @@ public:
 	~Player(void);
 
 	void			update(void);
-	virtual void	draw(sf::RenderTarget &, sf::RenderStates) const;
+	virtual void	draw(sf::RenderTarget &, sf::RenderStates)  const;
 };
 
 #endif
-
-

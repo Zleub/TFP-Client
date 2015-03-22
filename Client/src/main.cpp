@@ -6,7 +6,7 @@
 // /ddddy:oddddddddds:sddddd/ By adebray - adebray
 // sdddddddddddddddddddddddds
 // sdddddddddddddddddddddddds Created: 2015-03-20 22:14:10
-// :ddddddddddhyyddddddddddd: Modified: 2015-03-21 12:00:24
+// :ddddddddddhyyddddddddddd: Modified: 2015-03-22 18:29:01
 //  odddddddd/`:-`sdddddddds
 //   +ddddddh`+dh +dddddddo
 //    -sdddddh///sdddddds-
@@ -14,22 +14,22 @@
 //          .-::::-`
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Network.hpp>
 
 #include <Game.hpp>
-#include <Socket.hpp>
 
 int main(void)
 {
 	Game	game;
-	Socket	s;
+	sf::UdpSocket	socket;
 
-	try {
-		s.C_connect();
-	}
-	catch (std::exception e) {
-		std::cerr << e.what() << std::endl;
+	if (!socket.bind(4242))
+	{
+		std::cout << "bind not successful" << std::endl;
+		return -1;
 	}
 
-	s.C_write("request");
+	std::string message = "Hi, I am " + sf::IpAddress::getLocalAddress().toString() + "\n";
+	socket.send(message.c_str(), message.size() + 2, "127.0.0.1", 4242);
 	game.run();
 }
