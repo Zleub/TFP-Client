@@ -6,7 +6,7 @@
 // /ddddy:oddddddddds:sddddd/ By adebray - adebray
 // sdddddddddddddddddddddddds
 // sdddddddddddddddddddddddds Created: 2015-03-20 23:44:55
-// :ddddddddddhyyddddddddddd: Modified: 2015-03-22 21:31:50
+// :ddddddddddhyyddddddddddd: Modified: 2015-03-25 21:21:35
 //  odddddddd/`:-`sdddddddds
 //   +ddddddh`+dh +dddddddo
 //    -sdddddh///sdddddds-
@@ -15,16 +15,65 @@
 
 #include <Game.hpp>
 
-int	Game::Width = 800;
-int	Game::Height = 600;
+int				Game::Width = 800;
+int				Game::Height = 600;
+bool			Game::Verb = false;
+std::string		Game::Host = "127.0.0.1";
+int				Game::Port = 4242;
 
 Game::Game (void)
 {
 	_window = new sf::RenderWindow(sf::VideoMode(Game::Width, Game::Height), "SFML window");
 	_player = new Player("res/xx_crusader_m.png");
+	// if (!_socket.bind(4242))
+	// {
+	// 	std::cout << "bind not successful" << std::endl;
+	// 	// return -1;
+	// }
+
+	std::string str = "test";
+	char *test = pack(5, str.c_str(), 5);
+
+	_socket.send(test, str.size() + 9 + 1, Game::Host, Game::Port);
+}
+
+Game::Game(Lua & _lua)
+{
+	_window = new sf::RenderWindow(sf::VideoMode(Game::Width, Game::Height), "SFML window");
+	_player = new Player("res/xx_crusader_m.png");
+	// if (!_socket.bind(4242))
+	// {
+	// 	std::cout << "bind not successful" << std::endl;
+	// 	// return -1;
+	// }
+
+	std::string str = "test";
+	char *test = pack(5, str.c_str(), 5);
+
+	_socket.send(test, str.size() + 9 + 1, Game::Host, Game::Port);
+	(void)_lua;
 }
 
 Game::~Game (void) {}
+
+char *			Game::pack(unsigned char id, char const * data, size_t length)
+{
+	size_t	size;
+	char *	frame;
+
+	size = sizeof(unsigned char) + sizeof(size_t) + sizeof(char) * (length);
+
+	frame = static_cast<char *>(::operator new(size));
+
+	memset(frame, 0, size);
+	memcpy(frame, &id, sizeof(unsigned char));
+	memcpy(frame + sizeof(unsigned char), &length, sizeof(size_t));
+
+	if (length > 0)
+		memcpy(frame + sizeof(unsigned char) + sizeof(size_t), data, length);
+
+	return frame;
+}
 
 void	Game::update(void)
 {

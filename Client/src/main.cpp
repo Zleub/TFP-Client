@@ -6,30 +6,24 @@
 // /ddddy:oddddddddds:sddddd/ By adebray - adebray
 // sdddddddddddddddddddddddds
 // sdddddddddddddddddddddddds Created: 2015-03-20 22:14:10
-// :ddddddddddhyyddddddddddd: Modified: 2015-03-22 18:29:01
+// :ddddddddddhyyddddddddddd: Modified: 2015-03-25 16:46:55
 //  odddddddd/`:-`sdddddddds
 //   +ddddddh`+dh +dddddddo
 //    -sdddddh///sdddddds-
 //      .+ydddddddddhs/.
 //          .-::::-`
 
-#include <SFML/Graphics.hpp>
-#include <SFML/Network.hpp>
+#include <Client.hpp>
 
-#include <Game.hpp>
-
-int main(void)
+int main(int argc, char* argv[])
 {
-	Game	game;
-	sf::UdpSocket	socket;
+	Client		client;
 
-	if (!socket.bind(4242))
-	{
-		std::cout << "bind not successful" << std::endl;
-		return -1;
-	}
+	for (int i = 0; i < argc; ++i)
+		if (std::string(argv[i]) == "-v") {
+			std::cout << "VERBOSE MODE" << std::endl;
+			Game::Verb = true;
+		}
 
-	std::string message = "Hi, I am " + sf::IpAddress::getLocalAddress().toString() + "\n";
-	socket.send(message.c_str(), message.size() + 2, "127.0.0.1", 4242);
-	game.run();
+	client.Start();
 }

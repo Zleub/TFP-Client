@@ -6,7 +6,7 @@
 // /ddddy:oddddddddds:sddddd/ By adebray - adebray
 // sdddddddddddddddddddddddds
 // sdddddddddddddddddddddddds Created: 2015-03-20 23:42:51
-// :ddddddddddhyyddddddddddd: Modified: 2015-03-21 18:44:00
+// :ddddddddddhyyddddddddddd: Modified: 2015-03-25 21:21:48
 //  odddddddd/`:-`sdddddddds
 //   +ddddddh`+dh +dddddddo
 //    -sdddddh///sdddddds-
@@ -17,26 +17,58 @@
 #define GAME_HPP
 
 #include <iostream>
+
 #include <SFML/Graphics.hpp>
+#include <SFML/Network.hpp>
+
 #include <Player.hpp>
+#include <Loader.hpp>
+#include <Lua.hpp>
 
 class Game {
 private:
 	Game(Game const &);
 	Game &	operator=(Game const &);
 
-	Player				*_player;
-	sf::RenderWindow	*_window;
+	Player					*_player;
+	sf::RenderWindow		*_window;
+
+	sf::UdpSocket			_socket;
+	Loader					_loader;
 public:
 	Game(void);
+	Game(Lua &);
 	~Game(void);
 
-	static int Width;
-	static int Height;
+	/** \brief Verbosity state
+	*
+	*	defined in game.conf.lua */
+	static bool				Verb;
+	/** \brief Window Width
+	*
+	*	defined in game.conf.lua */
+	static int				Width;
+	/** \brief Window Height
+	*
+	*	defined in game.conf.lua */
+	static int				Height;
+	/** \brief Socket Handling
+	*
+	*	defined in game.conf.lua */
+	static std::string		Host;
+	/** \brief Socket Handling
+	*
+	*	defined in game.conf.lua */
+	static int				Port;
 
-	void	update(void) ;
-	void	draw(void) const ;
-	void	run(void) ;
+	/** \brief Main update function */
+	void					update(void) ;
+	/** \brief Main draw function */
+	void					draw(void) const ;
+	/** \brief Main loop function */
+	void					run(void) ;
+
+	char *					pack(unsigned char, char const *, size_t);
 };
 
 #endif
