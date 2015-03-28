@@ -6,7 +6,7 @@
 // /ddddy:oddddddddds:sddddd/ By adebray - adebray
 // sdddddddddddddddddddddddds
 // sdddddddddddddddddddddddds Created: 2015-03-25 16:38:37
-// :ddddddddddhyyddddddddddd: Modified: 2015-03-25 21:01:30
+// :ddddddddddhyyddddddddddd: Modified: 2015-03-26 10:22:00
 //  odddddddd/`:-`sdddddddds
 //   +ddddddh`+dh +dddddddo
 //    -sdddddh///sdddddds-
@@ -15,10 +15,14 @@
 
 #include <Client.hpp>
 
+bool	Client::Verb = false;
+
 Client::Client(void)
 {
-	_game = new Game(_lua);
-	_lua.exec("require 'TFP'");
+	if (Client::Verb)
+		std::cout << "To need of pity" << std::endl;
+
+	_lua.exec("require 'conf.TFP'");
 	_lua.exec("test = Modules[1]");
 }
 
@@ -26,6 +30,6 @@ Client::~Client(void) {}
 
 void	Client::Start(void) {
 	// _lua.exec("test = 5");
-	std::cout << _lua.getString("test") << std::endl;
-	_game->run();
+	std::cout << _lua.getVar("test") << std::endl;
+	_game.run();
 }

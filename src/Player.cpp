@@ -6,15 +6,15 @@
 // /ddddy:oddddddddds:sddddd/ By adebray - adebray
 // sdddddddddddddddddddddddds
 // sdddddddddddddddddddddddds Created: 2015-03-20 22:30:49
-// :ddddddddddhyyddddddddddd: Modified: 2015-03-23 23:53:35
+// :ddddddddddhyyddddddddddd: Modified: 2015-03-26 10:13:24
 //  odddddddd/`:-`sdddddddds
 //   +ddddddh`+dh +dddddddo
 //    -sdddddh///sdddddds-
 //      .+ydddddddddhs/.
 //          .-::::-`
 
-#include <Game.hpp>
 #include <Player.hpp>
+#include <Client.hpp>
 
 int	Player::Width = 48;
 int	Player::Height = 80;
@@ -85,7 +85,7 @@ void	Player::KeyState(sf::Keyboard::Key k)
 		_hscale = -1;
 	}
 
-	if (Game::Verb)
+	if (Client::Verb)
 	std::cout << "Movement Matrix: " << b[0] << b[1] << b[2] << b[3] << std::endl;
 
 	this->setTexture();

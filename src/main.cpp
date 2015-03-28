@@ -6,7 +6,7 @@
 // /ddddy:oddddddddds:sddddd/ By adebray - adebray
 // sdddddddddddddddddddddddds
 // sdddddddddddddddddddddddds Created: 2015-03-20 22:14:10
-// :ddddddddddhyyddddddddddd: Modified: 2015-03-25 16:46:55
+// :ddddddddddhyyddddddddddd: Modified: 2015-03-26 12:01:01
 //  odddddddd/`:-`sdddddddds
 //   +ddddddh`+dh +dddddddo
 //    -sdddddh///sdddddds-
@@ -15,15 +15,19 @@
 
 #include <Client.hpp>
 
-int main(int argc, char* argv[])
+void launch(void)
 {
 	Client		client;
 
+	client.Start();
+}
+
+int main(int argc, char* argv[])
+{
 	for (int i = 0; i < argc; ++i)
 		if (std::string(argv[i]) == "-v") {
 			std::cout << "VERBOSE MODE" << std::endl;
-			Game::Verb = true;
+			Client::Verb = true;
 		}
-
-	client.Start();
+	launch();
 }

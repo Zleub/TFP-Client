@@ -6,7 +6,7 @@
 // /ddddy:oddddddddds:sddddd/ By adebray - adebray
 // sdddddddddddddddddddddddds
 // sdddddddddddddddddddddddds Created: 2015-03-20 23:44:55
-// :ddddddddddhyyddddddddddd: Modified: 2015-03-25 21:21:35
+// :ddddddddddhyyddddddddddd: Modified: 2015-03-26 10:18:09
 //  odddddddd/`:-`sdddddddds
 //   +ddddddh`+dh +dddddddo
 //    -sdddddh///sdddddds-
@@ -14,15 +14,18 @@
 //          .-::::-`
 
 #include <Game.hpp>
+#include <Client.hpp>
 
 int				Game::Width = 800;
 int				Game::Height = 600;
-bool			Game::Verb = false;
 std::string		Game::Host = "127.0.0.1";
 int				Game::Port = 4242;
 
 Game::Game (void)
 {
+	if (Client::Verb)
+		std::cout << "become a stranger" << std::endl;
+
 	_window = new sf::RenderWindow(sf::VideoMode(Game::Width, Game::Height), "SFML window");
 	_player = new Player("res/xx_crusader_m.png");
 	// if (!_socket.bind(4242))
@@ -35,23 +38,6 @@ Game::Game (void)
 	char *test = pack(5, str.c_str(), 5);
 
 	_socket.send(test, str.size() + 9 + 1, Game::Host, Game::Port);
-}
-
-Game::Game(Lua & _lua)
-{
-	_window = new sf::RenderWindow(sf::VideoMode(Game::Width, Game::Height), "SFML window");
-	_player = new Player("res/xx_crusader_m.png");
-	// if (!_socket.bind(4242))
-	// {
-	// 	std::cout << "bind not successful" << std::endl;
-	// 	// return -1;
-	// }
-
-	std::string str = "test";
-	char *test = pack(5, str.c_str(), 5);
-
-	_socket.send(test, str.size() + 9 + 1, Game::Host, Game::Port);
-	(void)_lua;
 }
 
 Game::~Game (void) {}

@@ -6,17 +6,22 @@
 // /ddddy:oddddddddds:sddddd/ By adebray - adebray
 // sdddddddddddddddddddddddds
 // sdddddddddddddddddddddddds Created: 2015-03-24 10:27:00
-// :ddddddddddhyyddddddddddd: Modified: 2015-03-25 21:03:06
+// :ddddddddddhyyddddddddddd: Modified: 2015-03-26 12:04:27
 //  odddddddd/`:-`sdddddddds
 //   +ddddddh`+dh +dddddddo
 //    -sdddddh///sdddddds-
 //      .+ydddddddddhs/.
 //          .-::::-`
 
-#include "Lua.hpp"
+#include <iostream>
+#include <Lua.hpp>
+#include <Client.hpp>
 
 Lua::Lua(void)
 {
+	if (Client::Verb)
+		std::cout << "Expect nothing. Live frugally" << std::endl;
+
 	this->L = luaL_newstate();
 	luaL_openlibs(this->L);
 	this->init();
@@ -64,4 +69,19 @@ int			Lua::getNumber(std::string name)
 	else
 		return lua_tonumber(L, -1);
 	return (0);
+}
+
+Lua::Test	Lua::getVar(std::string name)
+{
+
+	(void)name;
+	Lua::Test _u;
+	_u._s = "Test";
+	return (_u);
+}
+
+std::ostream &		operator<<(std::ostream & os, Lua::Test obj)
+{
+	(void)obj;
+	return os << "This is ope surcharge" << std::endl;
 }

@@ -6,7 +6,7 @@
 // /ddddy:oddddddddds:sddddd/ By adebray - adebray
 // sdddddddddddddddddddddddds
 // sdddddddddddddddddddddddds Created: 2015-03-25 16:15:17
-// :ddddddddddhyyddddddddddd: Modified: 2015-03-25 16:49:18
+// :ddddddddddhyyddddddddddd: Modified: 2015-03-26 11:18:22
 //  odddddddd/`:-`sdddddddds
 //   +ddddddh`+dh +dddddddo
 //    -sdddddh///sdddddds-
@@ -15,6 +15,8 @@
 
 #ifndef LOADER_HPP
 #define LOADER_HPP
+
+// #include <iostream>
 
 class Loader {
 private:
