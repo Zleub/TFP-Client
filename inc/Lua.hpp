@@ -6,7 +6,7 @@
 // /ddddy:oddddddddds:sddddd/ By adebray - adebray
 // sdddddddddddddddddddddddds
 // sdddddddddddddddddddddddds Created: 2015-03-24 10:27:00
-// :ddddddddddhyyddddddddddd: Modified: 2015-03-26 12:03:51
+// :ddddddddddhyyddddddddddd: Modified: 2015-04-04 03:35:53
 //  odddddddd/`:-`sdddddddds
 //   +ddddddh`+dh +dddddddo
 //    -sdddddh///sdddddds-
@@ -34,14 +34,25 @@ private:
 	int				getNumber(std::string);
 	// int			getTable(std::string);
 
-	std::string	getType(std::string);
+	std::string		getType(std::string);
 public:
+	enum Type
+	{
+		NBR,
+		STR
+	};
 	union Test
 	{
 		char const	*_s;
 		int			_i;
 		// ~Test() {}
 	};
+	struct Caca
+	{
+		Test	var;
+		Type	type;
+	};
+
 
 	Lua(void);
 	~Lua(void);

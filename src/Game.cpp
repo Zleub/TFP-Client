@@ -6,7 +6,7 @@
 // /ddddy:oddddddddds:sddddd/ By adebray - adebray
 // sdddddddddddddddddddddddds
 // sdddddddddddddddddddddddds Created: 2015-03-20 23:44:55
-// :ddddddddddhyyddddddddddd: Modified: 2015-03-26 10:18:09
+// :ddddddddddhyyddddddddddd: Modified: 2015-04-04 02:27:01
 //  odddddddd/`:-`sdddddddds
 //   +ddddddh`+dh +dddddddo
 //    -sdddddh///sdddddds-
@@ -24,7 +24,7 @@ int				Game::Port = 4242;
 Game::Game (void)
 {
 	if (Client::Verb)
-		std::cout << "become a stranger" << std::endl;
+		std::cout << "Game Constructor" << std::endl;
 
 	_window = new sf::RenderWindow(sf::VideoMode(Game::Width, Game::Height), "SFML window");
 	_player = new Player("res/xx_crusader_m.png");

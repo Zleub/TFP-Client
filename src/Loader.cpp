@@ -6,7 +6,7 @@
 // /ddddy:oddddddddds:sddddd/ By adebray - adebray
 // sdddddddddddddddddddddddds
 // sdddddddddddddddddddddddds Created: 2015-03-25 16:19:23
-// :ddddddddddhyyddddddddddd: Modified: 2015-03-26 10:16:15
+// :ddddddddddhyyddddddddddd: Modified: 2015-04-04 02:27:08
 //  odddddddd/`:-`sdddddddds
 //   +ddddddh`+dh +dddddddo
 //    -sdddddh///sdddddds-
@@ -19,7 +19,7 @@
 Loader::Loader(void)
 {
 	if (Client::Verb)
-		std::cout << "On surprise." << std::endl;
+		std::cout << "Loader Constructor" << std::endl;
 }
 Loader::~Loader(void) {}
 

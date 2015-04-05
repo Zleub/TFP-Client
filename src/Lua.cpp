@@ -6,7 +6,7 @@
 // /ddddy:oddddddddds:sddddd/ By adebray - adebray
 // sdddddddddddddddddddddddds
 // sdddddddddddddddddddddddds Created: 2015-03-24 10:27:00
-// :ddddddddddhyyddddddddddd: Modified: 2015-03-26 12:04:27
+// :ddddddddddhyyddddddddddd: Modified: 2015-04-04 03:45:23
 //  odddddddd/`:-`sdddddddds
 //   +ddddddh`+dh +dddddddo
 //    -sdddddh///sdddddds-
@@ -20,7 +20,7 @@
 Lua::Lua(void)
 {
 	if (Client::Verb)
-		std::cout << "Expect nothing. Live frugally" << std::endl;
+		std::cout << "Lua Constructor" << std::endl;
 
 	this->L = luaL_newstate();
 	luaL_openlibs(this->L);
@@ -73,15 +73,26 @@ int			Lua::getNumber(std::string name)
 
 Lua::Test	Lua::getVar(std::string name)
 {
-
-	(void)name;
+	// Lua::Caca
 	Lua::Test _u;
-	_u._s = "Test";
+
+	_u._s = 0;
+	lua_getglobal(L, name.c_str());
+	if (lua_isnumber(L, -1))
+		_u._i = lua_tonumber(L, -1);
+	else if (lua_isstring(L, -1))
+		_u._s = lua_tostring(L, -1);
 	return (_u);
 }
 
 std::ostream &		operator<<(std::ostream & os, Lua::Test obj)
 {
 	(void)obj;
+	// if (obj._s)
+	// 	std::cout << obj._s << std::endl;
+	// else if (obj._i)
+	// 	std::cout << obj._i << std::endl;
+	// else
+	// 	std::cout << "Time for BULLSHIT" << std::endl;
 	return os << "This is ope surcharge" << std::endl;
 }
